@@ -107,8 +107,8 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> logout() async {
-    _token = null;
-    _userID = null;
+    _token = null.toString();
+    _userID = null.toString();
     _expiryDate = null;
     if (_authTimer != null) {
       _authTimer!.cancel();
@@ -116,8 +116,8 @@ class Auth with ChangeNotifier {
     }
     notifyListeners();
     final pref = await SharedPreferences.getInstance();
-    pref.remove("userDate"); // only the userData key SharedPreferences
-    // pref.clear(); // it clear all the data from the SharedPreferences all!!
+    // pref.remove("userDate"); // only the userData key SharedPreferences
+    pref.clear(); // it clear all the data from the SharedPreferences all!!
   }
 
   void _autoLogout() {
