@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_management/helper/custom_routh.dart';
 import 'package:state_management/providers/auth.dart';
 import 'package:state_management/providers/cart.dart';
 import 'package:state_management/providers/orders.dart';
@@ -63,6 +64,12 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.purple,
             // ignore: deprecated_member_use
             accentColor: Colors.deepOrange,
+            pageTransitionsTheme: PageTransitionsTheme(
+              builders: {
+                TargetPlatform.android: CustomPageTransitionBuilder(),
+                TargetPlatform.iOS: CustomPageTransitionBuilder(),
+              }, //for all page route
+            ),
           ),
           home: authData.isAuth
               ? ProductOverViewScreen()

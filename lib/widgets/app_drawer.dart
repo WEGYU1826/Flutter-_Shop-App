@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_management/helper/custom_routh.dart';
 import 'package:state_management/screens/order_screen.dart';
 import 'package:state_management/screens/user_product_screen.dart';
 
@@ -40,6 +41,11 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(
                 OrderScreen.routeName,
               );
+              // Navigator.of(context).pushReplacement(
+              //   CustomRoute(
+              //     builder: (context) => OrderScreen(),
+              //   ),
+              // ); // this how we can apply custom route to individual page
             },
           ),
           const Divider(),
