@@ -307,24 +307,39 @@ class _AuthCardState extends State<AuthCard>
                     child: CircularProgressIndicator(),
                   )
                 else
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: _submit,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                          horizontal: 30.0,
+                          vertical: 8.0,
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).primaryColor),
+                      foregroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).primaryTextTheme.button!.color!),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).primaryTextTheme.button!.color,
                     child:
                         Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                   ),
-                FlatButton(
-                  onPressed: _switchAuthMode,
-                  padding:
+                TextButton(
+                  style: ButtonStyle(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    padding: MaterialStateProperty.all(
                       const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).primaryColor,
+                    ),
+                    foregroundColor: MaterialStateProperty.all(
+                      Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  onPressed: _switchAuthMode,
                   child: Text(
                       '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
                 ),
